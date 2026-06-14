@@ -1,0 +1,13 @@
+Flask
+
+tensorflow
+
+numpy
+
+Pillow
+
+gunicorn
+
+h5py
+
+opencv-python-headless
