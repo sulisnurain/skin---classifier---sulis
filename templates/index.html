@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Klasifikasi Jenis Kulit Wajah</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#EEF5FF;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.header{
+    background:#ff8cd3;
+    padding:18px 25px;
+}
+
+.header h2{
+    color:white;
+    font-size:24px;
+}
+
+.banner{
+    margin:20px;
+    border-radius:20px;
+    padding:50px 30px;
+    background:linear-gradient(135deg,#ff8cd3,#ff8cd3);
+    color:white;
+}
+
+.banner h1{
+    font-size:40px;
+    font-weight:700;
+    line-height:1.1;
+}
+
+.banner p{
+    margin-top:15px;
+    font-size:15px;
+}
+
+.upload-section{
+    padding:20px 30px;
+    text-align:center;
+}
+
+.upload-section h3{
+    color:#333;
+    margin-bottom:20px;
+}
+
+.preview-box{
+    margin-bottom:20px;
+}
+
+#preview{
+    display:none;
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    border-radius:15px;
+    border:3px solid #ff8cd3;
+}
+
+.upload-card{
+    width:250px;
+    height:180px;
+    margin:auto;
+    background:white;
+    border-radius:20px;
+    border:2px dashed #ff8cd3;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.upload-card:hover{
+    transform:translateY(-5px);
+    border-color:#ff8cd3;
+    box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+
+.upload-icon{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.upload-card h3{
+    color:#ff8cd3;
+    margin-bottom:5px;
+}
+
+.upload-card p{
+    font-size:13px;
+    color:#666;
+}
+
+button{
+    width:100%;
+    margin-top:25px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#ff8cd3;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#ff8cd3;
+}
+
+.info{
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    padding:0 20px 25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div class="header">
+    <h2>Klasifikasi Kulit Wajah</h2>
+</div>
+
+<div class="banner">
+    <h1>WELCOME TO<br>SKIN DETECTOR</h1>
+
+</div>
+
+<form action="/predict" method="POST" enctype="multipart/form-data">
+
+    <div class="upload-section">
+
+        <h3>Pilih Foto Wajah</h3>
+
+        <div class="preview-box">
+            <img id="preview">
+        </div>
+
+        <label for="imageInput" class="upload-card">
+
+            <div class="upload-icon">📷</div>
+
+            <h3>Pilih Foto</h3>
+
+            <p>Klik untuk memilih gambar</p>
+
+        </label>
+
+        <input
+            id="imageInput"
+            type="file"
+            name="image"
+            accept="image/*"
+            onchange="previewImage(event)"
+            required
+            hidden
+        >
+
+        <button type="submit">
+            Analisis Kulit
+        </button>
+
+    </div>
+
+</form>
+
+<div class="info">
+    Upload foto wajah yang jelas untuk mendapatkan hasil klasifikasi yang lebih akurat.
+</div>
+```
+
+</div>
+
+<script>
+
+function previewImage(event){
+
+    const preview = document.getElementById('preview');
+
+    preview.src = URL.createObjectURL(event.target.files[0]);
+
+    preview.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>
